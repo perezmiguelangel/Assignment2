@@ -63,10 +63,26 @@ public class EnemyController : MonoBehaviour
             player.DamageTaken();
         }
     }
-    
+
     public void SetType(int type)
     {
         movementType = type;
+    }
+
+    public void SetSpeed(float spd)
+    {
+        speed = spd;
+    }
+
+    public void SetHealth(int h)
+    {
+        health = h;
+    }
+    
+    public void SetAmpFrq(float amp, float frq)
+    {
+        amplitude = amp;
+        frequency = frq;
     }
 
 }
