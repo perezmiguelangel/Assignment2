@@ -5,6 +5,9 @@ public class GameController : MonoBehaviour
 {
 
     public static GameController gameController;
+    public int score;
+
+
 
     void Awake()
     {
@@ -19,13 +22,11 @@ public class GameController : MonoBehaviour
         }
     }
 
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         SceneManager.LoadScene("SampleScene");
     }
 
-    // Update is called once per frame
     void Update()
     {
         

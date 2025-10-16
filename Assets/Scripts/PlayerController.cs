@@ -1,3 +1,4 @@
+using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -5,13 +6,13 @@ public class PlayerController : MonoBehaviour
 {
     //
     public Rigidbody2D rb;
-    public BoxCollider2D PlayerBC;
-    public CapsuleCollider2D groundBC;
+    public PolygonCollider2D polyCollider;
     public float speed = 5f;
-    public int jumpsRemaining = 1;
-    public float jumpForce = 2f;
     public InputAction playerMovement;
-    public InputAction jump;
+    public InputAction shoot;
+    public float shotSpeed = 10f;
+    public GameObject laser;
+    public float time = 4f;
     Vector2 moveDir = Vector2.zero;
     public bool grounded;
     public LayerMask groundMask;
@@ -19,12 +20,12 @@ public class PlayerController : MonoBehaviour
     private void OnEnable()
     {
         playerMovement.Enable();
-        jump.Enable();
+        shoot.Enable();
     }
     private void OnDisable()
     {
         playerMovement.Disable();
-        jump.Disable();
+        shoot.Disable();
     }
 
 
@@ -32,25 +33,36 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         moveDir = playerMovement.ReadValue<Vector2>();
-        if(jump.triggered && jumpsRemaining > 0)
+        if (shoot.triggered)
         {
-            --jumpsRemaining;
+            Shoot();
+        }
+        /*
+        if(jump.triggered)
+        {
             rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
         }
         if(grounded)
         {
             jumpsRemaining = 1;
         }
+        */
     }
 
     void FixedUpdate()
     {
-        rb.linearVelocity = new Vector2(moveDir.x * speed, rb.linearVelocityY);
+        rb.linearVelocity = new Vector2(moveDir.x * speed, moveDir.y * speed);
+        //CheckGround();
+    }
+
+    void Shoot()
+    {
+        Instantiate(laser, transform.position, transform.rotation);    
     }
 
     void CheckGround()
     {
-        grounded = Physics2D.OverlapArea(groundBC.bounds.min, groundBC.bounds.max, groundMask) != null;
+        //grounded = Physics2D.OverlapArea(groundBC.bounds.min, groundBC.bounds.max, groundMask) != null;
     }
 
 }
