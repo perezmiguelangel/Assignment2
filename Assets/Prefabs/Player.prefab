@@ -182,9 +182,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ba738e30dd0d517a4a0d7e9cbab41338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PlayerController
+  health: 5
   rb: {fileID: 5805223591387453605}
   polyCollider: {fileID: 1920729326585824595}
-  speed: 5
+  speed: 8
   playerMovement:
     m_Name: Player Movement
     m_Type: 0

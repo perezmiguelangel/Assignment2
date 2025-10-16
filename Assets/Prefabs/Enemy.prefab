@@ -109,6 +109,14 @@ MonoBehaviour:
   speed: 6
   rb: {fileID: 5662867410941517054}
   health: 1
+  movementType: 0
+  amplitude: 4
+  frequency: 0.5
+  sineCenterX: 0
+  xSpeed: 2
+  leftBound: -7.5
+  rightBound: 7.5
+  offset: 0
 --- !u!60 &1710931171010578973
 PolygonCollider2D:
   m_ObjectHideFlags: 0

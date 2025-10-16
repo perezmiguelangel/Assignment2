@@ -1,29 +1,37 @@
 using UnityEngine;
+using System.Collections;
 
 public class LevelManager : MonoBehaviour
 {
 
     public GameObject enemy;
-    public float speed = 5f;
-   
-   
-   
+    public float spawnSpeed = 0.25f;
+
+    //Movement type: 0 = straight, 1 = sine
+    
    
    
     void Start()
     {
-        Create();
+        StartCoroutine(Create());
     }
 
     void Update()
     {
 
     }
-    
-    void Create()
+
+    IEnumerator Create()
     {
-        GameObject enemyObject = Instantiate(enemy, transform.position, transform.rotation);
-        Rigidbody2D enemyRB = enemyObject.GetComponent<EnemyController>().rb;
-        enemyRB.linearVelocity = Vector2.down * speed;
+
+        for (int i = 0; i < 10; i++)
+        {
+            GameObject enemyObject = Instantiate(enemy, transform.position, transform.rotation);
+            enemyObject.GetComponent<EnemyController>().SetType(1);
+
+            yield return new WaitForSecondsRealtime(spawnSpeed);
+        }
     }
+    
+   
 }
