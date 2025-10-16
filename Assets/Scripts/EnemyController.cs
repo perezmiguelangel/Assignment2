@@ -36,11 +36,11 @@ public class EnemyController : MonoBehaviour
     {
         if (movementType == 0) //Straight
         {
-            Debug.Log("move = straight");
+            //Debug.Log("move = straight");
         }
         else if(movementType == 1) // Sine Wave
         {
-            Debug.Log("move = sine");
+            //Debug.Log("move = sine");
 
             Vector2 pos = transform.position;
             float sine = Mathf.Sin(pos.y * frequency) * amplitude;

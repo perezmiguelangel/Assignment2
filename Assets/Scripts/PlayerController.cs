@@ -40,7 +40,7 @@ public class PlayerController : MonoBehaviour
         }
         if(health == 0)
         {
-            Debug.Log("DEAD");
+            //Debug.Log("DEAD");
         }
         /*
         if(jump.triggered)
@@ -69,7 +69,7 @@ public class PlayerController : MonoBehaviour
     public void DamageTaken()
     {
         health--;
-        Debug.Log("player damaged");
+        //Debug.Log("player damaged");
     }
 
 
