@@ -1,3 +1,5 @@
+using System;
+using UnityEditor.Build.Content;
 using UnityEngine;
 
 public class LaserController : MonoBehaviour
@@ -20,9 +22,10 @@ public class LaserController : MonoBehaviour
     {
         if (collision.CompareTag("Enemy"))
         {
-            Debug.Log("collided with enemy");
+           // Debug.Log("collided with enemy");
             Destroy(collision.gameObject);
             Destroy(gameObject);
+            GameController.gcInstance.AddScore();
         }
         if (collision.CompareTag("Player"))
         {

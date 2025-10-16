@@ -5,6 +5,7 @@ using UnityEngine.InputSystem;
 public class PlayerController : MonoBehaviour
 {
     //
+    public int health;
     public Rigidbody2D rb;
     public PolygonCollider2D polyCollider;
     public float speed = 5f;
@@ -57,8 +58,14 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(laser, transform.position, transform.rotation);    
+        Instantiate(laser, transform.position, transform.rotation);
     }
+
+    public void DamageTaken()
+    {
+        health--;
+    }
+
 
     void CheckGround()
     {

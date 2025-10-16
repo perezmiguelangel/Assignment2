@@ -4,16 +4,16 @@ using UnityEngine.SceneManagement;
 public class GameController : MonoBehaviour
 {
 
-    public static GameController gameController;
+    public static GameController gcInstance;
     public int score;
-
+   
 
 
     void Awake()
     {
-        if (gameController == null)
+        if (gcInstance == null)
         {
-            gameController = this;
+            gcInstance = this;
             DontDestroyOnLoad(gameObject);
         }
         else
@@ -29,6 +29,13 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-        
+
     }
+
+    public void AddScore()
+    {
+        score = score + 1000;
+        Debug.Log("score added, current:" + score);
+    }
+
 }
