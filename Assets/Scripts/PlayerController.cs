@@ -38,6 +38,10 @@ public class PlayerController : MonoBehaviour
         {
             Shoot();
         }
+        if(health == 0)
+        {
+            Debug.Log("DEAD");
+        }
         /*
         if(jump.triggered)
         {
@@ -58,12 +62,14 @@ public class PlayerController : MonoBehaviour
 
     void Shoot()
     {
-        Instantiate(laser, transform.position, transform.rotation);
+        GameObject laserObject = Instantiate(laser, transform.position, transform.rotation);
+        laserObject.GetComponent<LaserController>().isPlayerLaser = true;
     }
 
     public void DamageTaken()
     {
         health--;
+        Debug.Log("player damaged");
     }
 
 

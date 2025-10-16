@@ -5,7 +5,7 @@ public class EnemyController : MonoBehaviour
 
     public PolygonCollider2D polyCollider;
     public float speed = 6f;
-    public Rigidbody2D rb;
+   
     public int health;
     
     

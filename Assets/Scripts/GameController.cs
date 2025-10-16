@@ -35,7 +35,7 @@ public class GameController : MonoBehaviour
     public void AddScore()
     {
         score = score + 1000;
-        Debug.Log("score added, current:" + score);
+        //Debug.Log("score added, current:" + score);
     }
 
 }
