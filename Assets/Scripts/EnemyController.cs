@@ -5,12 +5,17 @@ public class EnemyController : MonoBehaviour
 
     public PolygonCollider2D polyCollider;
     public float speed = 6f;
-   
+    public Rigidbody2D rb;
     public int health;
-    
-    
+
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
+    {
+
+    }
+
+    void FixedUpdate()
     {
         
     }

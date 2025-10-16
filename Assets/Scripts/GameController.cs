@@ -6,7 +6,7 @@ public class GameController : MonoBehaviour
 
     public static GameController gcInstance;
     public int score;
-   
+    public int level;
 
 
     void Awake()
@@ -24,6 +24,7 @@ public class GameController : MonoBehaviour
 
     void Start()
     {
+        level = 1;
         SceneManager.LoadScene("SampleScene");
     }
 

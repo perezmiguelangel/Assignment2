@@ -107,6 +107,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   polyCollider: {fileID: 1710931171010578973}
   speed: 6
+  rb: {fileID: 5662867410941517054}
   health: 1
 --- !u!60 &1710931171010578973
 PolygonCollider2D:
