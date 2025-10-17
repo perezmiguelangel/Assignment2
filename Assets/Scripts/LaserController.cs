@@ -11,11 +11,14 @@ public class LaserController : MonoBehaviour
     public Rigidbody2D rb;
     public bool isPlayerLaser = true;
 
+    public AudioSource audioSource;
+    public AudioClip laser;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         rb = GetComponent<Rigidbody2D>();
+        audioSource.PlayOneShot(laser);
         rb.linearVelocity = Vector2.up * speed;
 
         Destroy(gameObject, time);
