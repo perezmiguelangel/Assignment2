@@ -19,10 +19,16 @@ public class EnemyController : MonoBehaviour
     public float rightBound;
     public float offset;
 
+    private SpriteRenderer spriteRenderer;
+    public Animator animator;
+
+    private Vector2 previousPosition;
+
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         sineCenterX = transform.position.x;
+        previousPosition = transform.position;
         rb.linearVelocity = Vector2.down * speed;
         //offset = Random.Range(0f, Mathf.PI * 2f);
         if(movementType == 0)
@@ -46,6 +52,10 @@ public class EnemyController : MonoBehaviour
             float sine = Mathf.Sin(pos.y * frequency) * amplitude;
             pos.x = sine;
             transform.position = pos;
+
+            Vector2 fakeVelocity = (pos - previousPosition) / Time.deltaTime;
+            previousPosition = pos;
+            animator.SetFloat("xPos", fakeVelocity.x);
         }
     }
 

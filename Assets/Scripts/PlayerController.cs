@@ -18,6 +18,11 @@ public class PlayerController : MonoBehaviour
     public bool grounded;
     public LayerMask groundMask;
 
+    public Animator animator;
+
+
+    private SpriteRenderer spriteRenderer;
+
     private void OnEnable()
     {
         playerMovement.Enable();
@@ -38,20 +43,13 @@ public class PlayerController : MonoBehaviour
         {
             Shoot();
         }
-        if(health == 0)
+        if (health == 0)
         {
             //Debug.Log("DEAD");
         }
-        /*
-        if(jump.triggered)
-        {
-            rb.AddForce(jumpForce * Vector2.up, ForceMode2D.Impulse);
-        }
-        if(grounded)
-        {
-            jumpsRemaining = 1;
-        }
-        */
+
+        float xPos = moveDir.x; 
+        animator.SetFloat("xPos", xPos);
     }
 
     void FixedUpdate()
