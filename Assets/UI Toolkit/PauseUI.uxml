@@ -1,0 +1,8 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=b811cd774525ac54aa5d011beed7d296&amp;type=3#MainMenuStyle" />
+    <ui:VisualElement name="Container" style="flex-grow: 1; flex-direction: column; align-content: center; flex-wrap: nowrap; align-self: center; align-items: center; justify-content: center; margin-bottom: 0%; -unity-text-align: upper-left; position: relative; top: 1px; height: 1438px; width: 1077px; left: 0;">
+        <ui:Label text="Paused" class="header" />
+        <ui:Button text="Resume" name="Resume" class="button" />
+        <ui:Button text="Exit to Main Menu" name="Exit" class="button" />
+    </ui:VisualElement>
+</ui:UXML>

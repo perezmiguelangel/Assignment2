@@ -13,6 +13,7 @@ public class MainMenuController : MonoBehaviour
     private Button ResetScoreButton;
     private Button BackButton;
     private Slider VolumeSlider;
+    private Label ScoreLabel;
 
     public VisualTreeAsset mainMenuTree;
     public VisualTreeAsset settingsTree;
@@ -29,6 +30,9 @@ public class MainMenuController : MonoBehaviour
         unregisterCallbacks();
         document.visualTreeAsset = mainMenuTree;
 
+        ScoreLabel = document.rootVisualElement.Q("HighScore") as Label;
+        ScoreLabel.text = "High Score: " + GameController.gcInstance.highscore.ToString();
+
         StartButton = document.rootVisualElement.Q("Start") as Button;
         StartButton.RegisterCallback<ClickEvent>(OnStartClick);
 
@@ -44,6 +48,9 @@ public class MainMenuController : MonoBehaviour
         unregisterCallbacks();
         document.visualTreeAsset = settingsTree;
         //VolumeSlider
+
+        ScoreLabel = document.rootVisualElement.Q("HighScore") as Label;
+        ScoreLabel.text = "High Score: " + GameController.gcInstance.highscore.ToString();
 
         VolumeSlider = document.rootVisualElement.Q("VolumeSlider") as Slider;
         VolumeSlider.RegisterValueChangedCallback(OnSliderChange);

@@ -2,7 +2,7 @@
     <Style src="project://database/Assets/UI%20Toolkit/MainMenuStyle.uss?fileID=7433441132597879392&amp;guid=b811cd774525ac54aa5d011beed7d296&amp;type=3#MainMenuStyle" />
     <ui:VisualElement name="Container" style="flex-grow: 1; align-content: flex-start; align-items: stretch; justify-content: center;">
         <ui:Label text="Settings" name="Label" class="header" />
-        <ui:Label text="Label" class="highscore" style="-unity-background-scale-mode: stretch-to-fill; background-position-y: center; padding-top: 2%; padding-right: 2%; padding-bottom: 2%; padding-left: 2%;" />
+        <ui:Label text="High Score: " name="HighScore" class="highscore" style="-unity-background-scale-mode: stretch-to-fill; background-position-y: center; padding-top: 2%; padding-right: 2%; padding-bottom: 2%; padding-left: 2%;" />
         <ui:Slider label="Volume&#10;" value="42" high-value="100" name="VolumeSlider" class="slider" />
         <ui:Button text="Reset Score" name="ResetScore" class="button" />
         <ui:Button text="Back" name="Back" class="button" />

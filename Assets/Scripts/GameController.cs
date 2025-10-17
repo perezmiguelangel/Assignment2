@@ -6,8 +6,9 @@ public class GameController : MonoBehaviour
 
     public static GameController gcInstance;
     public int score;
+    public int highscore;
     public int level;
-
+    public bool paused;
     public AudioSource audioSource;
   
 
@@ -34,18 +35,22 @@ public class GameController : MonoBehaviour
 
     void Update()
     {
-
+       
     }
 
     public void AddScore()
     {
-        score = score + 1000;
+        score += 100;
+        if(score > highscore)
+        {
+            highscore = score;
+        }
         //Debug.Log("score added, current:" + score);
     }
 
     public void ResetScore()
     {
-        score = 0;
+        highscore = 0;
     }
 
     public void LoadScene(string str)

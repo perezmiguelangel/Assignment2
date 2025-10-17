@@ -1,3 +1,4 @@
+using System.Collections;
 using JetBrains.Annotations;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -11,14 +12,18 @@ public class PlayerController : MonoBehaviour
     public float speed = 5f;
     public InputAction playerMovement;
     public InputAction shoot;
+    public InputAction pause;
     public float shotSpeed = 10f;
     public GameObject laser;
     public float time = 4f;
     Vector2 moveDir = Vector2.zero;
-    public bool grounded;
-    public LayerMask groundMask;
+
+    public AudioSource audioSource;
+    public AudioClip explosion;
 
     public Animator animator;
+
+    public GameUIController gameUIController;
 
 
     private SpriteRenderer spriteRenderer;
@@ -27,11 +32,13 @@ public class PlayerController : MonoBehaviour
     {
         playerMovement.Enable();
         shoot.Enable();
+        pause.Enable();
     }
     private void OnDisable()
     {
         playerMovement.Disable();
         shoot.Disable();
+        pause.Disable();
     }
 
 
@@ -47,9 +54,16 @@ public class PlayerController : MonoBehaviour
         {
             //Debug.Log("DEAD");
         }
+        if (pause.triggered)
+        {
+            gameUIController.PauseMenu();
+            GameController.gcInstance.paused = true;
+        }
 
-        float xPos = moveDir.x; 
+        float xPos = moveDir.x;
         animator.SetFloat("xPos", xPos);
+        
+        
     }
 
     void FixedUpdate()
@@ -67,13 +81,20 @@ public class PlayerController : MonoBehaviour
     public void DamageTaken()
     {
         health--;
+        if(health <= 0)
+        {
+            //dead
+            StartCoroutine(PlayerDeath());
+
+            GameController.gcInstance.LoadScene("MainMenu");
+        }
         //Debug.Log("player damaged");
     }
 
-
-    void CheckGround()
+    IEnumerator PlayerDeath()
     {
-        //grounded = Physics2D.OverlapArea(groundBC.bounds.min, groundBC.bounds.max, groundMask) != null;
+        audioSource.PlayOneShot(explosion);
+        yield return new WaitForSecondsRealtime(2f);
+        
     }
-
 }

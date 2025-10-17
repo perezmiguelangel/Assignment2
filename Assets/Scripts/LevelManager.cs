@@ -10,16 +10,11 @@ public class LevelManager : MonoBehaviour
     public float enemySpeed;
     public float amplitude;
     public float frequency;
+    public float levelCooldown = 3f;
 
     
 
     //Movement type: 0 = straight, 1 = sine
-    
-    
-    void Update()
-    {
-
-    }
    
    
     void Start()
@@ -60,7 +55,7 @@ public class LevelManager : MonoBehaviour
 
         yield return StartCoroutine(SineEnemy(10, amplitude, frequency, enemySpeed));
 
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(levelCooldown);
       //  Debug.Log("level 1 finish");
         StartCoroutine(Level2());
     }
@@ -72,12 +67,17 @@ public class LevelManager : MonoBehaviour
         amplitude = 5;
         frequency = 0.25f;
         yield return StartCoroutine(SineEnemy(5, amplitude, frequency, enemySpeed));
-
+        yield return new WaitForSecondsRealtime(waveCooldown);
+        yield return StartCoroutine(SineEnemy(8, amplitude, frequency, enemySpeed));
+        yield return new WaitForSecondsRealtime(waveCooldown);
+        yield return StartCoroutine(StEnemy(10, enemySpeed));
+        yield return new WaitForSecondsRealtime(waveCooldown);
+        yield return StartCoroutine(StEnemy(5, enemySpeed));
+        yield return new WaitForSecondsRealtime(waveCooldown);
+        yield return StartCoroutine(SineEnemy(12, amplitude, frequency, enemySpeed));
         yield return new WaitForSecondsRealtime(waveCooldown);
 
-
-
-        yield return new WaitForSecondsRealtime(3);
+        yield return new WaitForSecondsRealtime(levelCooldown);
        // Debug.Log("level 2 finish");
         StartCoroutine(Level3());
     }
@@ -101,7 +101,15 @@ public class LevelManager : MonoBehaviour
         yield return new WaitForSecondsRealtime(waveCooldown);
         yield return StartCoroutine(SineEnemy(5, amplitude, frequency, enemySpeed));
         yield return StartCoroutine(StEnemy(5, enemySpeed));
+        enemySpeed = 14;
+        yield return new WaitForSecondsRealtime(waveCooldown);
+        yield return StartCoroutine(StEnemy(12, enemySpeed));
+        yield return StartCoroutine(SineEnemy(12, amplitude, frequency, enemySpeed));
+        yield return new WaitForSecondsRealtime(waveCooldown);
 
+
+        yield return new WaitForSecondsRealtime(levelCooldown);
+        GameController.gcInstance.LoadScene("MainMenu");
         //Debug.Log("level 3 finish");
     }
     IEnumerator SineEnemy(int amt, float amp, float frq, float speed)

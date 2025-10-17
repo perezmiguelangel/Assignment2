@@ -185,6 +185,7 @@ MonoBehaviour:
   isPlayerLaser: 1
   audioSource: {fileID: 9125592897010976837}
   laser: {fileID: 8300000, guid: f24029e769e9c2c43b5882e7b5fff199, type: 3}
+  explosion: {fileID: 8300000, guid: 1ba17b089a283e441adfe0285ae3677e, type: 3}
 --- !u!82 &9125592897010976837
 AudioSource:
   m_ObjectHideFlags: 0

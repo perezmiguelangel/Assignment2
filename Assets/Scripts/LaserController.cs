@@ -1,6 +1,6 @@
 using System;
 using TMPro;
-using UnityEditor.Build.Content;
+
 using UnityEngine;
 
 public class LaserController : MonoBehaviour
@@ -13,6 +13,7 @@ public class LaserController : MonoBehaviour
 
     public AudioSource audioSource;
     public AudioClip laser;
+    public AudioClip explosion;
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -29,11 +30,12 @@ public class LaserController : MonoBehaviour
         if (collision.CompareTag("Enemy") && isPlayerLaser)
         {
            // Debug.Log("collided with enemy");
+            audioSource.PlayOneShot(explosion);
             Destroy(collision.gameObject);
             Destroy(gameObject);
             GameController.gcInstance.AddScore();
         }
-        if (collision.CompareTag("Player") && !isPlayerLaser)
+        else if (collision.CompareTag("Player") && !isPlayerLaser)
         {
             PlayerController player = collision.GetComponent<PlayerController>();
             player.DamageTaken();
